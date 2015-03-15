@@ -106,6 +106,39 @@ var geoCachesOverlay = new L.TileLayer('http://{s}.geocaching.com/map.png?x={x}&
 	subdomains: ['tiles01', 'tiles02', 'tiles03', 'tiles04']
 });
 
+var blitzortungOverlay = new L.TileLayer('http://www.blitzortung.org/Scripts_php/php_get_tile.php?x={x}&y={y}&z={z}&t=1023&min=7924298', {
+    attribution: 'Blitzortung.org',
+    maxZoom: 18
+});
+
+
+var elisaLTEOverlay = new L.TileLayer('http://coveragemap-api.elisa.fi/tiles/service/gmaps?layers=elisa:LTE&zoom={z}&x={x}&y={y}&format=image/png', {
+    attribution: 'Elisa Oyj',
+    maxZoom: 18,
+    opacity: 0.3
+});
+
+var soneraLTEOverlay = new L.TileLayer.WMS('http://coverageportal.netcom.no/gcp/tile?services=LTE_DATA&qualities=1&COUNTRYID=FI_TELIASONERA-CP&serviceGroup=mobile_broadband', {
+    attribution: 'Teliasonera Finland Oyj',
+    format: 'img/png',
+    transparent: true,
+    opacity: 0.3,
+    layers: 16
+});
+
+var elisa3GOverlay = new L.TileLayer('http://coveragemap-api.elisa.fi/tiles/service/gmaps?layers=elisa:WCDMA&zoom={z}&x={x}&y={y}&format=image/png', {
+    attribution: 'Elisa Oyj',
+    maxZoom: 18,
+    opacity: 0.3
+});
+
+var sonera3GOverlay = new L.TileLayer.WMS('http://coverageportal.netcom.no/gcp/tile?services=HSDPA&qualities=1&COUNTRYID=FI_TELIASONERA-CP&serviceGroup=mobile_broadband', {
+    attribution: 'Teliasonera Finland Oyj',
+    format: 'img/png',
+    transparent: true,
+    opacity: 0.3,
+    layers: 16
+});
 
 
 
@@ -143,7 +176,12 @@ var overlayMaps = {
     "Hiking": higkingOverlay,
     "Borders Dark": bordersOverlayDark,
     "Borders Light": bordersOverlayLight,
-    "GeoCaches": geoCachesOverlay
+    "GeoCaches": geoCachesOverlay,
+    "Blitzortung": blitzortungOverlay,
+    "Elisa LTE Coverage": elisaLTEOverlay,
+    "Sonera LTE Coverage": soneraLTEOverlay,
+    "Elisa 3G Coverage": elisa3GOverlay,
+    "Sonera 3G Coverage": sonera3GOverlay
 };
 
 L.control.layers(baseLayers, overlayMaps).addTo(map);
