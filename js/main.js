@@ -73,6 +73,18 @@ var worldBLue = new L.TileLayer('http://{s}.tiles.mapbox.com/v3/mapbox.world-blu
 	subdomains: ['a', 'b']
 });
 
+var earthAtNight = new L.TileLayer('http://map1.vis.earthdata.nasa.gov/wmts-webmerc/VIIRS_CityLights_2012/default/{time}/{tilematrixset}{maxZoom}/{z}/{y}/{x}.jpg', {
+    time: '',
+    attribution:
+                    'Imagery provided by services from the Global Imagery Browse Services (GIBS), operated by the NASA/GSFC/Earth Science Data and Information System ' +
+                    '(<a href="https://earthdata.nasa.gov">ESDIS</a>) with funding provided by NASA/HQ.',
+    bounds: [[-85.0511287776, -179.999999975], [85.0511287776, 179.999999975]],
+    minZoom: 1,
+    maxZoom: 8,
+    tilematrixset: 'GoogleMapsCompatible_Level'
+
+});
+
 var ggl = new L.Google();
 var ggl2 = new L.Google('TERRAIN');
 
@@ -106,6 +118,39 @@ var geoCachesOverlay = new L.TileLayer('http://{s}.geocaching.com/map.png?x={x}&
 	subdomains: ['tiles01', 'tiles02', 'tiles03', 'tiles04']
 });
 
+var blitzortungOverlay = new L.TileLayer('http://www.blitzortung.org/Scripts_php/php_get_tile.php?x={x}&y={y}&z={z}&t=1023&min=7924298', {
+    attribution: 'Blitzortung.org',
+    maxZoom: 18
+});
+
+
+var elisaLTEOverlay = new L.TileLayer('http://coveragemap-api.elisa.fi/tiles/service/gmaps?layers=elisa:LTE&zoom={z}&x={x}&y={y}&format=image/png', {
+    attribution: 'Elisa Oyj',
+    maxZoom: 18,
+    opacity: 0.3
+});
+
+var soneraLTEOverlay = new L.TileLayer.WMS('http://coverageportal.netcom.no/gcp/tile?services=LTE_DATA&qualities=1&COUNTRYID=FI_TELIASONERA-CP&serviceGroup=mobile_broadband', {
+    attribution: 'Teliasonera Finland Oyj',
+    format: 'img/png',
+    transparent: true,
+    opacity: 0.3,
+    layers: 16
+});
+
+var elisa3GOverlay = new L.TileLayer('http://coveragemap-api.elisa.fi/tiles/service/gmaps?layers=elisa:WCDMA&zoom={z}&x={x}&y={y}&format=image/png', {
+    attribution: 'Elisa Oyj',
+    maxZoom: 18,
+    opacity: 0.3
+});
+
+var sonera3GOverlay = new L.TileLayer.WMS('http://coverageportal.netcom.no/gcp/tile?services=HSDPA&qualities=1&COUNTRYID=FI_TELIASONERA-CP&serviceGroup=mobile_broadband', {
+    attribution: 'Teliasonera Finland Oyj',
+    format: 'img/png',
+    transparent: true,
+    opacity: 0.3,
+    layers: 16
+});
 
 
 
@@ -136,14 +181,20 @@ var baseLayers = {
     "Google":ggl,
     "Google terrain":ggl2,
     "Thunderforest Outdoors": thunderOutdoors,
-    "Thunderforest Landscape": thunderLandscape
+    "Thunderforest Landscape": thunderLandscape,
+    "Earth at night": earthAtNight
 };
 
 var overlayMaps = {
     "Hiking": higkingOverlay,
     "Borders Dark": bordersOverlayDark,
     "Borders Light": bordersOverlayLight,
-    "GeoCaches": geoCachesOverlay
+    "GeoCaches": geoCachesOverlay,
+    "Blitzortung": blitzortungOverlay,
+    "Elisa LTE Coverage": elisaLTEOverlay,
+    "Sonera LTE Coverage": soneraLTEOverlay,
+    "Elisa 3G Coverage": elisa3GOverlay,
+    "Sonera 3G Coverage": sonera3GOverlay
 };
 
 L.control.layers(baseLayers, overlayMaps).addTo(map);
