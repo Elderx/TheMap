@@ -73,6 +73,18 @@ var worldBLue = new L.TileLayer('http://{s}.tiles.mapbox.com/v3/mapbox.world-blu
 	subdomains: ['a', 'b']
 });
 
+var earthAtNight = new L.TileLayer('http://map1.vis.earthdata.nasa.gov/wmts-webmerc/VIIRS_CityLights_2012/default/{time}/{tilematrixset}{maxZoom}/{z}/{y}/{x}.jpg', {
+    time: '',
+    attribution:
+                    'Imagery provided by services from the Global Imagery Browse Services (GIBS), operated by the NASA/GSFC/Earth Science Data and Information System ' +
+                    '(<a href="https://earthdata.nasa.gov">ESDIS</a>) with funding provided by NASA/HQ.',
+    bounds: [[-85.0511287776, -179.999999975], [85.0511287776, 179.999999975]],
+    minZoom: 1,
+    maxZoom: 8,
+    tilematrixset: 'GoogleMapsCompatible_Level'
+
+});
+
 var ggl = new L.Google();
 var ggl2 = new L.Google('TERRAIN');
 
@@ -169,7 +181,8 @@ var baseLayers = {
     "Google":ggl,
     "Google terrain":ggl2,
     "Thunderforest Outdoors": thunderOutdoors,
-    "Thunderforest Landscape": thunderLandscape
+    "Thunderforest Landscape": thunderLandscape,
+    "Earth at night": earthAtNight
 };
 
 var overlayMaps = {
