@@ -21,16 +21,6 @@ var openStreetMap = new L.TileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
 	maxZoom: 18
 });
 
-var tourist = new L.TileLayer('http://{s}.tile.cloudmade.com/70b5f93d0bb44ff9bc7a5a33336685c1/7/256/{z}/{x}/{y}.png', {
-	attribution: 'Map data &copy; 2011 OpenStreetMap contributors, Imagery &copy; 2011 CloudMade',
-	maxZoom: 18
-});
-
-var night = new L.TileLayer('http://{s}.tile.cloudmade.com/70b5f93d0bb44ff9bc7a5a33336685c1/999/256/{z}/{x}/{y}.png', {
-	attribution: 'Map data &copy; 2011 OpenStreetMap contributors, Imagery &copy; 2011 CloudMade',
-	maxZoom: 18
-});
-
 var taustakartta = new L.TileLayer('http://{s}.kartat.kapsi.fi/taustakartta/{z}/{x}/{y}.png', {
 	attribution: 'Kartta: Maanmittauslaitos',
 	maxZoom: 18,
@@ -171,15 +161,11 @@ var map = L.map('map', {
 
 var baseLayers = {
     "OpenStreetMap": openStreetMap,
-    "Tourist": tourist,
-    "Night": night,
     "Taustakartta": taustakartta,
     "Peruskartta": peruskartta,
     "Ortokuva": ortokuva,
     "BlueMarble": blueMarble,
     "Countries": worldBLue,
-    "Google":ggl,
-    "Google terrain":ggl2,
     "Thunderforest Outdoors": thunderOutdoors,
     "Thunderforest Landscape": thunderLandscape,
     "Earth at night": earthAtNight
